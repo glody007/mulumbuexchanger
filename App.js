@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { NavigationContainer, DarkTheme, useTheme } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -38,6 +39,20 @@ function TransactionsScreen() {
 }
 
 const Tab = createBottomTabNavigator();
+
+function MainStack() {
+  const { colors } = useTheme();
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Main"
+        component={MainScreen}
+        options={{ title: 'Main' }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 function MainScreen() {
   const { colors } = useTheme();
@@ -82,13 +97,14 @@ function ParametresScreen() {
 }
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer theme={ DarkTheme }>
       <Drawer.Navigator initialRouteName="Main">
         <Drawer.Screen name="Profile" component={ProfileScreen} />
-        <Drawer.Screen name="Main" component={MainScreen} />
+        <Drawer.Screen name="Main" component={MainStack} />
         <Drawer.Screen name="Methode de Paiement" component={PayementScreen} />
         <Drawer.Screen name="Parametres" component={ParametresScreen} />
       </Drawer.Navigator>
