@@ -6,14 +6,17 @@ import { NavigationContainer, DarkTheme, useTheme } from '@react-navigation/nati
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Actions from './components/Actions'
 
 function HomeScreen() {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Home</Text>
-      <StatusBar style="auto" />
+    <View style={[styles.container], { backgroundColor: "#252b36"}}>
+      <View style={{ height: 80 }}>
+
+      </View>
+      <Actions/>
     </View>
   );
 }
