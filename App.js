@@ -1,23 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, LogBox  } from 'react-native';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import { NavigationContainer, DarkTheme, useTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Actions from './components/Actions'
+import  Paires from './components/Paires'
+
+
+LogBox.ignoreLogs(['Reanimated 2', 'Remote debugger']);
 
 function HomeScreen() {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container], { backgroundColor: "#252b36"}}>
+    <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={{ height: 80 }}>
 
       </View>
-      <Actions/>
-    </View>
+      <View>
+        <Actions/>
+      </View>
+      <View>
+        <Paires/>
+      </View>
+    </ScrollView>
   );
 }
 
@@ -51,7 +60,7 @@ function MainStack() {
       <Stack.Screen
         name="Main"
         component={MainScreen}
-        options={{ title: 'Main' }}
+        options={{ title: 'MCapital' }}
       />
     </Stack.Navigator>
   );
