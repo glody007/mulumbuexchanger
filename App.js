@@ -9,6 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Actions from './components/Actions'
 import  Paires from './components/Paires'
 import Transactions from './components/Transactions'
+import Market from './components/Market'
 
 
 LogBox.ignoreLogs(['Reanimated 2', 'Remote debugger']);
@@ -36,7 +37,7 @@ function MarketScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Market</Text>
+      <Market/>
     </View>
   );
 }

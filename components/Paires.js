@@ -48,7 +48,7 @@ class Paires extends Component {
               <TableWrapper key={index} style={styles.row}>
                 {
                   rowData.map((cellData, cellIndex) => (
-                    <Cell key={cellIndex} data={cellIndex === 0 ? paire(cellData, index) : cellData} textStyle={{ color: theme.colors.text }}/>
+                    <Cell key={cellIndex} data={cellIndex === 0 ? paire(cellData, index) : cellData} textStyle={{ color: theme.colors.text, textAlign: 'center' }}/>
                   ))
                 }
               </TableWrapper>
