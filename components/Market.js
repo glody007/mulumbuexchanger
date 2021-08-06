@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Button } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 
 const Market = () => {
@@ -114,7 +114,10 @@ const Market = () => {
         renderItem={({item}) =>
         <View style={[styles.item, { backgroundColor: colors.card }]}>
           <View style={styles.detail}>
-            <Text style={{ color: colors.primary, fontWeight: "bold", fontSize: 18 }}>{ item.type }</Text>
+            <Text style={{ color: colors.text, fontWeight: "bold", fontSize: 18 }}>{ item.type }</Text>
+          </View>
+          <View style={styles.detail}>
+            <Text style={{ color: colors.text, fontWeight: "bold", fontSize: 18 }}>{ item.montant } { item.from_currency }</Text>
           </View>
           <View style={styles.detail}>
             <Text style={{ color: colors.text, textAlign: 'center' }}>
@@ -125,8 +128,12 @@ const Market = () => {
           <View style={styles.detail}>
             <Text style={{ color: colors.text, textAlign: 'right' }}>{ item.created }</Text>
           </View>
-          <View style={styles.detail}>
-            <Text style={{ color: colors.primary, fontWeight: "bold", fontSize: 18 }}>{ item.montant } { item.from_currency }</Text>
+          <View style={styles.button}>
+            <Button
+              title="Acheter"
+              color={colors.primary}
+              accessibilityLabel="Learn more about this purple button"
+            />
           </View>
         </View>
         }
@@ -151,7 +158,11 @@ const styles = StyleSheet.create({
   },
   detail: {
     flex: 1,
-    minWidth: '25%',
+    minWidth: '20%',
+  },
+  button: {
+    flex: 1,
+    minWidth: '30%',
   },
   text: {
     fontSize: 15
