@@ -11,7 +11,10 @@ import Actions from './components/Actions'
 import  Paires from './components/Paires'
 import Transactions from './components/Transactions'
 import Market from './components/Market'
-
+import Login from './components/Login'
+import Parametres from './components/Parametres'
+import PayementMode from './components/PayementMode'
+import Profile from './components/Profile'
 
 LogBox.ignoreLogs(['Reanimated 2', 'Remote debugger']);
 
@@ -112,9 +115,13 @@ function ProfileScreen() {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Profile</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ title: 'Profile' }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -122,9 +129,13 @@ function PayementScreen() {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Methode de paiement</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="PayementMode"
+        component={PayementMode}
+        options={{ title: 'Méthode de paiement' }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -132,9 +143,13 @@ function ParametresScreen() {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Parametres</Text>
-    </View>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Parametres"
+        component={Parametres}
+        options={{ title: 'Paramètres' }}
+      />
+    </Stack.Navigator>
   );
 }
 
@@ -144,11 +159,11 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer theme={ DarkTheme }>
-      <Drawer.Navigator initialRouteName="Main">
+      <Drawer.Navigator initialRouteName="Principal">
         <Drawer.Screen name="Profile" component={ProfileScreen} />
-        <Drawer.Screen name="Main" component={MainStack} />
-        <Drawer.Screen name="Methode de Paiement" component={PayementScreen} />
-        <Drawer.Screen name="Parametres" component={ParametresScreen} />
+        <Drawer.Screen name="Principal" component={MainStack} />
+        <Drawer.Screen name="Méthode de Paiement" component={PayementScreen} />
+        <Drawer.Screen name="Paramètres" component={ParametresScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
