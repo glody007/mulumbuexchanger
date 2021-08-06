@@ -3,44 +3,52 @@ import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import { Table, TableWrapper, Row, Cell } from 'react-native-table-component';
 import { useTheme } from '@react-navigation/native';
 
-export default class Paires extends Component {
+class Paires extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tableHead: ['Paire', 'Prix', '(24h)Variation'],
       tableData: [
-        ['ETH/USDT', 'O.000000004', '+50'],
-        ['ETH/USDT', 'O.000000004', '+50'],
-        ['ETH/USDT', 'O.000000004', '+50'],
-        ['ETH/USDT', 'O.000000004', '+50']
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
+        [{ from_currency: 'ETH', to_currency: 'USDT' }, 'O.000000004', '+50'],
       ]
     }
   }
 
-  _alertIndex(index) {
-    Alert.alert(`This is row ${index + 1}`);
-  }
-
   render() {
     const state = this.state;
-    const element = (data, index) => (
-      <TouchableOpacity onPress={() => this._alertIndex(index)}>
-        <View style={styles.btn}>
-          <Text style={styles.btnText}>button</Text>
-        </View>
-      </TouchableOpacity>
+    const { theme } = this.props;
+    const paire = (data, index) => (
+      <Text style={{ color: theme.colors.text }}>
+        <Text style={{ color: theme.colors.text, fontWeight: "bold", fontSize: 18 }}>{ data.from_currency }</Text>
+        /{ data.to_currency }
+      </Text>
     );
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { backgroundColor: theme.colors.card }]}>
         <Table borderStyle={{borderColor: 'transparent'}}>
-          <Row data={state.tableHead} style={styles.head} textStyle={styles.headText}/>
+          <Row data={state.tableHead} style={styles.head} textStyle={[styles.headText, {color: theme.colors.primary}]}/>
           {
             state.tableData.map((rowData, index) => (
               <TableWrapper key={index} style={styles.row}>
                 {
                   rowData.map((cellData, cellIndex) => (
-                    <Cell key={cellIndex} data={cellData} textStyle={styles.text}/>
+                    <Cell key={cellIndex} data={cellIndex === 0 ? paire(cellData, index) : cellData} textStyle={{ color: theme.colors.text }}/>
                   ))
                 }
               </TableWrapper>
@@ -52,10 +60,16 @@ export default class Paires extends Component {
   }
 }
 
+export default function(props) {
+  const theme = useTheme();
+
+  return <Paires {...props} theme={theme} />;
+}
+
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16, paddingTop: 30 },
   head: { height: 40 },
-  text: { margin: 6, color: '#FFF', fontSize: 16 },
-  headText: { margin: 6, color: '#FFF', fontSize: 14 },
+  text: { margin: 6 },
+  headText: { margin: 6, fontSize: 12 },
   row: { flexDirection: 'row' },
 });

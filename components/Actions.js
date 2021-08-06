@@ -6,28 +6,28 @@ const Actions = () => {
   const { colors } = useTheme();
 
   return (
-    <View style={styles.container}>
-      <View style={styles.action}>
+    <View style={[styles.container, { backgroundColor: colors.card, borderColor: colors.card }]}>
+      <View style={[styles.action, { backgroundColor: colors.primary }]}>
         <Text style={[styles.textAction, { color: colors.text }]}>
           Depot
         </Text>
       </View>
-      <View style={styles.action}>
+      <View style={[styles.action, { backgroundColor: colors.primary }]}>
         <Text style={[styles.textAction, { color: colors.text }]}>
           Retrait
         </Text>
       </View>
-      <View style={styles.action}>
+      <View style={[styles.action, { backgroundColor: colors.primary }]}>
         <Text style={[styles.textAction, { color: colors.text }]}>
           Achat
         </Text>
       </View>
-      <View style={styles.action}>
+      <View style={[styles.action, { backgroundColor: colors.primary }]}>
         <Text style={[styles.textAction, { color: colors.text }]}>
           Vente
         </Text>
       </View>
-      <View style={styles.action}>
+      <View style={[styles.action, { backgroundColor: colors.primary }]}>
         <Text style={[styles.textAction, { color: colors.text }]}>
           Swap
         </Text>
@@ -53,8 +53,7 @@ const styles = StyleSheet.create({
     height: 30,
     minWidth: 80,
     borderRadius: 4,
-    justifyContent: "center",
-    backgroundColor: "steelblue"
+    justifyContent: "center"
   },
   textAction: {
     textAlign: "center",
