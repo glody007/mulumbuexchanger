@@ -90,7 +90,7 @@ function MainScreen() {
         options={{
           tabBarLabel: 'Marché',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="swap-horizontal" color={color} size={size} />
+            <MaterialCommunityIcons name="swap-horizontal-bold" color={color} size={size} />
           ),
         }}
         />
