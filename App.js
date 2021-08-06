@@ -8,6 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Actions from './components/Actions'
 import  Paires from './components/Paires'
+import Transactions from './components/Transactions'
 
 
 LogBox.ignoreLogs(['Reanimated 2', 'Remote debugger']);
@@ -45,7 +46,7 @@ function TransactionsScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ color: colors.text }}>Transactions</Text>
+      <Transactions/>
     </View>
   );
 }
